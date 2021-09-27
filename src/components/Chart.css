@@ -1,0 +1,31 @@
+.header{
+    display: block;
+    margin: 10px auto;
+}
+
+.pool-select{
+    font-size: 10px;
+}
+
+.chart{
+    font-size: 10px;
+    margin: 10px auto;
+}
+
+.Dropdown{
+    font-size: 10px;
+    margin: 20px auto;
+    max-width: 150px;
+}
+
+.chart-comp{
+    
+    display: block;
+    padding-top: 100px;
+    margin: 50px auto;
+}
+
+.graph{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
