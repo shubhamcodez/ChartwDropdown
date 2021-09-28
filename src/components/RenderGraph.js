@@ -64,17 +64,21 @@ function getData(datasets)
 
 var GiveResults = (props) =>
 {
-  return(<h2>{props.Results+" "}</h2>)
+  return(<h2>{props.results + " "}</h2>)
 }
 
 class RenderGraph extends Component {
   constructor (props) {
     super(props)
-    this.state = {selected: ''}
+    this.state = {selected: '',value:''}
     this._onSelect = this._onSelect.bind(this)
   }
   _onSelect (option) {
     this.setState({selected: option})
+    console.log(options)
+    console.log(option)
+    console.log(predicted_results)
+    this.setState({value: predicted_results[options.indexOf(option.value)]})
   }  
   render () {
     const defaultOption = this.state.selected;
@@ -86,8 +90,8 @@ class RenderGraph extends Component {
         <Dropdown className = 'Dropdown' options={options} onChange={this._onSelect} value={selectedValue} placeholder="Select an option"/>
         <GetpoolData className='select' Value = {selectedValue}/>
         <Line className="chart" data={getData(store.value.data.value)} options={Graphoptions} height='400' width='700'/>
-        <GiveResults Results = {store.value.Results.value}/>
-        {console.log(store.value.Results)}
+        <GiveResults results = {this.state.value}/>
+        {console.log(this.state.value)}
        </div>
       </section>
     )
