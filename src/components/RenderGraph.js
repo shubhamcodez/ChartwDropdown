@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component} from 'react';
 import parser from './parser.json' 
 import 'react-dropdown/style.css';
 import Dropdown from 'react-dropdown';
 import { store, useGlobalState } from 'state-pool';
 import { Line } from 'react-chartjs-2';
 import './Chart.css';
+
 
 const options = parser.pool_listed;
 const amp_values = parser.amp_values;
@@ -37,20 +38,18 @@ for(var j = 0; j < 4; j++)
 
 
 store.setState("data", datasets);
-store.setState("Results", []);
 
 const GetpoolData = (props) =>{
   var [data, setData] = useGlobalState("data");
-  var [Results, setResult] = useGlobalState("Results");
   var pool;
   
   for(var m = 0 ; m < 79; m++)
-   {if(props.Value === options[m]){pool = m;}}
+  {if(props.Value === options[m]){pool = m;}}
+  
   for(var j = 0; j < 4; j++)
   {datasets[j] = {label:genes[j],data:amp_values[j][pool],fill:false, backgroundColor: colors[j%colors.length], borderColor: bdcolor[j%bdcolor.length]}}
   
   setData(datasets);
-  setResult(predicted_results[pool]);
   return(<h1 className='pool-select'>Rendering chart for pool: {props.Value}</h1>)
 };
 
@@ -64,7 +63,18 @@ function getData(datasets)
 
 var GiveResults = (props) =>
 {
-  return(<h2>{props.results + " "}</h2>)
+  var Result = props.results;
+  var r1 = Result[0],r2 = Result[1] ,r3 = Result[2],r4 = Result[3];
+  return(
+  <div>
+  <h2>Predicted CT Values:</h2>
+      <p className= "resultbox">
+      <b className = "displayResults" contentEditable={true}>{r1}</b>
+      <b className = "displayResults" contentEditable={true}>{r2}</b>
+      <b className = "displayResults" contentEditable={true}>{r3}</b>
+      <b className = "displayResults" contentEditable={true}>{r4}</b></p>
+  </div>
+  ) 
 }
 
 class RenderGraph extends Component {

@@ -19,7 +19,6 @@
 }
 
 .chart-comp{
-    
     display: block;
     padding-top: 100px;
     margin: 50px auto;
@@ -28,4 +27,21 @@
 .graph{
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.displayResults{
+    background-color: rgba(255, 255, 255, 0.699);
+    display: inline;
+    font-size: medium !important;
+    font-weight: 600 !important;
+    border: 2px groove rgb(194, 188, 188);
+    padding: 10px 10px;
+    margin: 10px 10px;
+    border-radius: 10px;
+    color: rgb(53, 243, 180);
+}
+
+.resultbox{
+margin: 0 auto;
+width: auto;
 }
