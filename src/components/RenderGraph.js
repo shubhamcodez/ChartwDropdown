@@ -7,10 +7,10 @@ import { Line } from 'react-chartjs-2';
 import './Chart.css';
 
 
-const options = parser.pool_listed;
-const amp_values = parser.amp_values;
+const options = parser.pool_names;
+const amp_values = parser.amplification_values;
 const genes = parser.gene_names; 
-const predicted_results = parser.predicted_ct_values;
+const predicted_results = parser.predicted_pool_ct_values;
 
 const colors = ['rgb(255,195,0)','rgb(32,243,31)','rgb(31,243,232)', 'rgb(238,31,243)'];
 const bdcolor = ['rgba(255,195,0,0.3)','rgba(32,243,31,0.3)','rgba(31,243,232,0.3)', 'rgba(238,31,243,0.3)'];
@@ -34,8 +34,9 @@ const Graphoptions = {
 
 var datasets = [];
 for(var j = 0; j < 4; j++)
-{datasets[j] = {label:genes[j],data:amp_values[j][0],fill:false, backgroundColor: colors[j%colors.length], borderColor: bdcolor[j%bdcolor.length]}}
-
+{ 
+  console.log(typeof(amp_values[j][0]));
+  datasets[j] = {label:genes[j],data:amp_values[j][0],fill:false, backgroundColor: colors[j%colors.length], borderColor: bdcolor[j%bdcolor.length]}}
 
 store.setState("data", datasets);
 
