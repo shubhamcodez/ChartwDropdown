@@ -33,10 +33,11 @@ const Graphoptions = {
 };
 
 var datasets = [];
-for(var j = 0; j < 4; j++)
+
+for(var j = 0; j < genes.length; j++)
 { 
-  console.log(typeof(amp_values[j][0]));
-  datasets[j] = {label:genes[j],data:amp_values[j][0],fill:false, backgroundColor: colors[j%colors.length], borderColor: bdcolor[j%bdcolor.length]}}
+  datasets[j] = {label:genes[j],data:amp_values[j][0],fill:false, backgroundColor: colors[j%colors.length], borderColor: bdcolor[j%bdcolor.length]}
+}
 
 store.setState("data", datasets);
 
@@ -44,10 +45,10 @@ const GetpoolData = (props) =>{
   var [data, setData] = useGlobalState("data");
   var pool;
   
-  for(var m = 0 ; m < 79; m++)
+  for(var m = 0 ; m < options.length; m++)
   {if(props.Value === options[m]){pool = m;}}
   
-  for(var j = 0; j < 4; j++)
+  for(var j = 0; j < genes.length; j++)
   {datasets[j] = {label:genes[j],data:amp_values[j][pool],fill:false, backgroundColor: colors[j%colors.length], borderColor: bdcolor[j%bdcolor.length]}}
   
   setData(datasets);
@@ -57,7 +58,7 @@ const GetpoolData = (props) =>{
 function getData(datasets)
 {
   const data = {
-    labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45],
+    labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40],
     datasets: datasets,}
   return data;
 }
