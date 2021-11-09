@@ -1,11 +1,12 @@
 import React, { Component} from 'react';
+import axios from 'axios';
 import parser from './parser.json' 
 import 'react-dropdown/style.css';
 import Dropdown from 'react-dropdown';
 import { store, useGlobalState } from 'state-pool';
 import { Line } from 'react-chartjs-2';
 import './Chart.css';
-import axios from 'axios';
+
 
 async function FetchData() {
   try {
@@ -65,6 +66,7 @@ const GetpoolData = (props) =>{
   setData(datasets);
   return(<h1 className='pool-select'>Rendering chart for pool: {props.Value}</h1>)
 };
+
 
 function getData(datasets)
 {
