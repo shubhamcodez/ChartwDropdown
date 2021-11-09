@@ -7,7 +7,6 @@ import { store, useGlobalState } from 'state-pool';
 import { Line } from 'react-chartjs-2';
 import './Chart.css';
 
-
 async function FetchData() {
   try {
     const result = await axios.get("");
