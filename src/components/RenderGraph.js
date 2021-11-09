@@ -7,9 +7,10 @@ import { store, useGlobalState } from 'state-pool';
 import { Line } from 'react-chartjs-2';
 import './Chart.css';
 
+const dummyurl = "https://dev.api.algorithmicbiologics.com/api/v1/job/parse?attributes=%7B%7D&excelFileLoc=ManojsLab%2F2021-09-03T09%3A41%3A16.162Z-165K1ZCFRV4VHWJY%2FManifest.1630662076904.json&jobId=2021-09-03T09%3A41%3A16.162Z-165K1ZCFRV4VHWJY";
 async function FetchData() {
   try {
-    const result = await axios.get("https://dev.api.algorithmicbiologics.com/api/v1/job/parse?attributes=%7B%7D&excelFileLoc=ManojsLab%2F2021-09-03T09%3A41%3A16.162Z-165K1ZCFRV4VHWJY%2FManifest.1630662076904.json&jobId=2021-09-03T09%3A41%3A16.162Z-165K1ZCFRV4VHWJY");
+    const result = await axios.get(dummyurl)
     console.log(result.data);
     return result.data;
   } catch (error) {
