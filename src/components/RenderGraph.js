@@ -5,7 +5,19 @@ import Dropdown from 'react-dropdown';
 import { store, useGlobalState } from 'state-pool';
 import { Line } from 'react-chartjs-2';
 import './Chart.css';
+import axios from 'axios';
 
+async function FetchData() {
+  try {
+    const result = await axios.get("");
+    console.log(result.data);
+    return result.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+const parsed = FetchData();
+console.log(parsed)
 
 const options = parser.pool_names;
 const amp_values = parser.amplification_values;
@@ -21,8 +33,7 @@ const Graphoptions = {
       {
         ticks: {
           beginAtZero: true,
-          suggestedMax:9000,
-          max: 9000 
+          suggestedMax:9000, 
         },
       },
     ],
@@ -66,15 +77,14 @@ function getData(datasets)
 var GiveResults = (props) =>
 {
   var Result = props.results;
-  var r1 = Result[0],r2 = Result[1] ,r3 = Result[2],r4 = Result[3];
+  var r1 = Result[0],r2 = Result[1] ,r3 = Result[2];
   return(
   <div>
   <h2>Predicted CT Values:</h2>
       <p className= "resultbox">
       <b className = "displayResults" contentEditable={true}>{r1}</b>
       <b className = "displayResults" contentEditable={true}>{r2}</b>
-      <b className = "displayResults" contentEditable={true}>{r3}</b>
-      <b className = "displayResults" contentEditable={true}>{r4}</b></p>
+      <b className = "displayResults" contentEditable={true}>{r3}</b></p>
   </div>
   ) 
 }
